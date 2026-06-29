@@ -3,8 +3,8 @@ const menu = document.querySelector("[data-nav-menu]");
 const yearTargets = document.querySelectorAll("[data-year]");
 const siteConfig = window.ASH_IQ_SITE_CONFIG || {};
 
-const isConfiguredUrl = (value, placeholder) => {
-  return typeof value === "string" && value.startsWith("https://") && value !== placeholder;
+const isConfiguredUrl = (value, sentinel) => {
+  return typeof value === "string" && value.startsWith("https://") && value !== sentinel;
 };
 
 if (toggle && menu) {
@@ -43,19 +43,19 @@ document.querySelectorAll("[data-google-form-link]").forEach((link) => {
     link.dataset.formState = "configured";
     link.textContent = configuredLabel;
   } else {
-    link.href = "#google-form-placeholder";
+    link.href = "#google-form-pending";
     link.removeAttribute("target");
     link.removeAttribute("rel");
     link.setAttribute("aria-disabled", "true");
-    link.dataset.formState = "placeholder";
-    if (link.dataset.placeholderLabel) {
-      link.textContent = link.dataset.placeholderLabel;
+    link.dataset.formState = "pending";
+    if (link.dataset.pendingLabel) {
+      link.textContent = link.dataset.pendingLabel;
     }
   }
 });
 
 const formEmbed = document.querySelector("[data-google-form-embed]");
-const formPlaceholder = document.querySelector("[data-google-form-placeholder]");
+const formPending = document.querySelector("[data-google-form-pending]");
 const formStatus = document.querySelector("[data-google-form-status]");
 const sheetNameTargets = document.querySelectorAll("[data-google-sheet-name]");
 
@@ -63,14 +63,14 @@ sheetNameTargets.forEach((target) => {
   target.textContent = siteConfig.GOOGLE_SHEET_PRIVATE_NAME || "Ash IQ Waitlist Responses";
 });
 
-if (formEmbed && formPlaceholder) {
+if (formEmbed && formPending) {
   if (hasEmbedForm) {
     formEmbed.src = formEmbedUrl;
     formEmbed.hidden = false;
-    formPlaceholder.hidden = true;
+    formPending.hidden = true;
   } else {
     formEmbed.hidden = true;
-    formPlaceholder.hidden = false;
+    formPending.hidden = false;
   }
 }
 

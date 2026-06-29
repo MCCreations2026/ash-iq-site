@@ -690,14 +690,14 @@ h3 {
   background: var(--surface-strong);
 }
 
-.form-placeholder {
+.form-pending {
   padding: 1.35rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--paper);
 }
 
-.form-placeholder code,
+.form-pending code,
 .config-list code {
   font-family: Consolas, "Courier New", monospace;
   font-size: 0.9rem;
@@ -729,18 +729,18 @@ h3 {
   color: var(--ink-soft);
 }
 
-.button[data-form-state="placeholder"] {
+.button[data-form-state="pending"] {
   background: var(--cedar-dark);
 }
 
-.placeholder-links {
+.pending-links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.placeholder-links span {
+.pending-links span {
   display: inline-flex;
   padding: 0.45rem 0.6rem;
   border: 1px solid var(--line);

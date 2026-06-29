@@ -113,7 +113,7 @@ The site is wired for one public waitlist/contact path:
 - Contact page contains the Ash IQ waitlist/contact section.
 - The Contact page can either embed the public Google Form or open the public Google Form in a new tab.
 
-A private Google Sheet named `Ash IQ Waitlist Responses` was created and prepared through the Google Drive connector. A live Google Form could not be created from this environment because no Google Forms or Apps Script creation/execution path is available. The Form URLs remain placeholders until Gavin creates the Google Form and links it to the private response Sheet.
+A private Google Sheet named `Ash IQ Waitlist Responses` was created and prepared through the Google Drive connector. A live Google Form could not be created from this environment because no Google Forms or Apps Script creation/execution path is available. The Form URLs remain intentionally blank until Gavin creates the Google Form and links it to the private response Sheet.
 
 Configuration lives in:
 
@@ -155,7 +155,7 @@ When the domain is ready:
 2. Add a root-level `CNAME` file containing only the domain, for example `ashiq.app` or the final Pine & Ash-owned domain.
 3. Configure DNS with the domain provider.
 4. Enable HTTPS in GitHub Pages after DNS resolves.
-5. Update Open Graph URLs and image URLs from relative placeholders to the final absolute domain.
+5. Update Open Graph URLs and image URLs from relative staging values to the final absolute domain.
 
 GitHub Pages hosts the website only. Domain registration, DNS, and email hosting are separate services.
 
@@ -164,8 +164,8 @@ GitHub Pages hosts the website only. Domain registration, DNS, and email hosting
 Image assets live in `assets/img/`.
 
 - `pine-and-ash-hero.png` is the current hero/product preview image.
-- `favicon.svg` is a placeholder Ash IQ favicon.
-- `social-preview.svg` is a placeholder Ash IQ Open Graph/social preview image.
+- `favicon.svg` is the current Ash IQ favicon.
+- `social-preview.svg` is the current Ash IQ Open Graph/social preview image.
 
 Replace files in place to keep the existing HTML references working. If filenames change, update all page metadata and image references.
 
@@ -197,7 +197,7 @@ GitHub Pages does not provide email hosting, inboxes, SMTP, or contact-form proc
 
 Handle email separately through a provider such as Google Workspace, Microsoft 365, Fastmail, Proton, Zoho, or another business email host. Email hosting is separate from the Google Forms waitlist/contact flow.
 
-For the waitlist/contact flow, create the Google Form and linked private Sheet described in `docs/GOOGLE_FORMS_WAITLIST_SETUP.md`. This website currently uses clearly marked Google Form placeholders instead of a fake form backend.
+For the waitlist/contact flow, create the Google Form and linked private Sheet described in `docs/GOOGLE_FORMS_WAITLIST_SETUP.md`. This website currently uses a clearly marked pending Google Form state instead of a fake form backend.
 
 ## Related Docs
 
