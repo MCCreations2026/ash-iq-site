@@ -68,41 +68,25 @@ the local server URL printed by the command
 
 ## Deploy With GitHub Pages
 
-Launch status as of June 29, 2026: local site preparation is complete, but automated GitHub repository creation and GitHub Pages enablement are blocked in this Codex environment because `gh` is not installed/authenticated and the available GitHub connector does not expose repository-creation or Pages-configuration actions.
-
-Local launch content commit:
+Live site:
 
 ```text
-8ed1f78f6ccd4dafbc384b33e46f40cd0f5a9426
+https://mccreations2026.github.io/ash-iq-site/
 ```
 
-Target repository:
+GitHub repository:
 
 ```text
-ash-iq-site
+https://github.com/MCCreations2026/ash-iq-site
 ```
 
-Target description:
+GitHub Pages is configured as:
 
-```text
-Public website for Ash IQ by Pine & Ash.
-```
-
-1. Push this repository to GitHub.
-2. Open the repository settings in GitHub.
-3. Go to `Pages`.
-4. Set the source to deploy from the branch that contains these root files.
-5. Choose the root folder if GitHub asks for a folder.
-6. Save and wait for GitHub Pages to publish.
-7. Confirm these URLs work:
-   - `/`
-   - `/about.html`
-   - `/app.html`
-   - `/contact.html`
-   - `/assets/css/styles.css`
-   - `/assets/js/main.js`
-
-No build command is required.
+- Source: deploy from a branch.
+- Branch: `main`.
+- Folder: repository root (`/`).
+- Build command: none.
+- HTTPS: enforced.
 
 ## Waitlist And Contact Flow
 

@@ -40,56 +40,31 @@
 - `docs/BRAND_ARCHITECTURE.md`
 - `DEVELOPMENT_LOG.md`
 
-## GitHub Pages Launch Attempt
+## GitHub Pages Launch
 
-Automated launch was attempted on June 29, 2026.
+Automated launch was completed on June 29, 2026.
 
-Repo created or reused: no.
+- Repository created: yes.
+- Repository URL: `https://github.com/MCCreations2026/ash-iq-site`
+- Repository visibility: public.
+- Remote: `origin`
+- Pages enabled: yes.
+- Pages source: `main` branch, repository root `/`.
+- Build command: none.
+- Live URL: `https://mccreations2026.github.io/ash-iq-site/`
+- GitHub Pages status: built.
 
-Reason:
-
-- The local folder was not a Git repository at the start of the launch attempt.
-- A local Git repository was initialized on `main`.
-- No existing accessible `ash-iq-site` repository was found through the GitHub connector.
-- `gh` is not installed in the shell.
-- No GitHub token is exposed in the environment.
-- Git global `user.name` and `user.email` are not configured.
-- The available GitHub connector exposes repository search/inspection and file operations, but no repository-create or GitHub Pages-enable action.
-
-Target repository:
+Published site commit validated before the launch-report commit:
 
 ```text
-ash-iq-site
+522636f4785f45903028b60d87942bbfd7d9f4ef
 ```
 
-Target repository description:
-
-```text
-Public website for Ash IQ by Pine & Ash.
-```
-
-Local launch content commit hash:
-
-```text
-8ed1f78f6ccd4dafbc384b33e46f40cd0f5a9426
-```
-
-Remote commit status: not pushed because no remote repository could be created or reused from this environment.
-
-GitHub Pages status: not enabled.
-
-Live URL: pending.
-
-Pages source configuration to use after repo creation:
-
-- Branch: `main`
-- Folder: repository root (`/`)
-- Build command: none
-
-Launch report:
+Launch reports:
 
 ```text
 docs/GITHUB_PAGES_LAUNCH_REPORT.md
+docs/LAUNCH_REPORT.md
 ```
 
 ## Naming And Brand Changes
