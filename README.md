@@ -70,7 +70,7 @@ http://127.0.0.1:8080/
 
 Launch status as of June 29, 2026: local site preparation is complete, but automated GitHub repository creation and GitHub Pages enablement are blocked in this Codex environment because `gh` is not installed/authenticated and the available GitHub connector does not expose repository-creation or Pages-configuration actions.
 
-Local launch commit:
+Local launch content commit:
 
 ```text
 8ed1f78f6ccd4dafbc384b33e46f40cd0f5a9426

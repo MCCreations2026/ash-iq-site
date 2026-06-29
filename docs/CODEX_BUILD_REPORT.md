@@ -68,7 +68,7 @@ Target repository description:
 Public website for Ash IQ by Pine & Ash.
 ```
 
-Local commit hash:
+Local launch content commit hash:
 
 ```text
 8ed1f78f6ccd4dafbc384b33e46f40cd0f5a9426

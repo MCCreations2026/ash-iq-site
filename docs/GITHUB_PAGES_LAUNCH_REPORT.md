@@ -43,7 +43,7 @@ The site is plain static HTML/CSS/JS at the repository root, so no framework bui
 
 Pending. Target branch: `main`.
 
-Local launch commit:
+Local launch content commit:
 
 ```text
 8ed1f78f6ccd4dafbc384b33e46f40cd0f5a9426
