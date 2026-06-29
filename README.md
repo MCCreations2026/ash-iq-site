@@ -63,7 +63,7 @@ python -m http.server 8080
 Then open:
 
 ```text
-http://127.0.0.1:8080/
+the local server URL printed by the command
 ```
 
 ## Deploy With GitHub Pages
@@ -121,11 +121,11 @@ Configuration lives in:
 assets/js/site-config.js
 ```
 
-Placeholders:
+Current pending configuration:
 
 ```js
-GOOGLE_FORM_PUBLIC_URL: "GOOGLE_FORM_PUBLIC_URL"
-GOOGLE_FORM_EMBED_URL: "GOOGLE_FORM_EMBED_URL"
+GOOGLE_FORM_PUBLIC_URL: ""
+GOOGLE_FORM_EMBED_URL: ""
 GOOGLE_SHEET_PRIVATE_NAME: "Ash IQ Waitlist Responses"
 ```
 

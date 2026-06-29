@@ -77,5 +77,5 @@ if (formEmbed && formPlaceholder) {
 if (formStatus) {
   formStatus.textContent = hasPublicForm || hasEmbedForm
     ? "The Ash IQ Google Form is configured and ready for public responses."
-    : "Google Form setup is pending. The site is wired for the public form URL and embed URL, but no live Google Form URL has been added yet.";
+    : "The Ash IQ waitlist and contact form is being connected. No app account is created from this website.";
 }

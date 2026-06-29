@@ -60,11 +60,11 @@ Public form links live in:
 assets/js/site-config.js
 ```
 
-Placeholders:
+Pending configuration:
 
 ```js
-GOOGLE_FORM_PUBLIC_URL: "GOOGLE_FORM_PUBLIC_URL"
-GOOGLE_FORM_EMBED_URL: "GOOGLE_FORM_EMBED_URL"
+GOOGLE_FORM_PUBLIC_URL: ""
+GOOGLE_FORM_EMBED_URL: ""
 GOOGLE_SHEET_PRIVATE_NAME: "Ash IQ Waitlist Responses"
 ```
 

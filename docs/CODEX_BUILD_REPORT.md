@@ -152,11 +152,11 @@ Documented remaining setup instead:
 - Setup guide: `docs/GOOGLE_FORMS_WAITLIST_SETUP.md`
 - QA guide: `docs/WAITLIST_QA_CHECKLIST.md`
 
-URLs intentionally left as placeholders:
+Public Form URLs intentionally left empty:
 
 ```js
-GOOGLE_FORM_PUBLIC_URL: "GOOGLE_FORM_PUBLIC_URL"
-GOOGLE_FORM_EMBED_URL: "GOOGLE_FORM_EMBED_URL"
+GOOGLE_FORM_PUBLIC_URL: ""
+GOOGLE_FORM_EMBED_URL: ""
 ```
 
 Public Form responder URL configured: no.
@@ -231,7 +231,7 @@ python -m http.server 8080
 Then visit:
 
 ```text
-http://127.0.0.1:8080/
+the local server URL printed by the command
 ```
 
 ## How To Deploy

@@ -98,10 +98,10 @@ Launch docs:
 
 The private Sheet has been created and prepared, but a live Google Form could not be created automatically from this environment because the available connector set does not expose Google Forms creation, Apps Script execution, or authenticated Forms API access.
 
-## Known Placeholders
+## Known Pending Items
 
-- `GOOGLE_FORM_PUBLIC_URL` in `assets/js/site-config.js`
-- `GOOGLE_FORM_EMBED_URL` in `assets/js/site-config.js`
+- Public Google Form URL in `assets/js/site-config.js`
+- Public Google Form embed URL in `assets/js/site-config.js`
 - Final custom domain.
 - Final contact email/social links.
 - Final privacy policy.
