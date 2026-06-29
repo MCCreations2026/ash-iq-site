@@ -52,7 +52,7 @@ Use this checklist after the Google Form public URL and optional embed URL are c
 
 - Test `index.html`, `app.html`, and `contact.html` on a narrow viewport.
 - Confirm the Contact page waitlist section is readable.
-- Confirm the iframe or placeholder does not overflow.
+- Confirm the iframe or pending form state does not overflow.
 - Confirm tap targets are comfortable.
 - Confirm the mobile menu still opens and closes.
 

@@ -104,14 +104,14 @@ docs/GITHUB_PAGES_LAUNCH_REPORT.md
 ## Waitlist And Contact Implementation
 
 - Added `assets/js/site-config.js` as the reusable public form configuration location.
-- Added placeholders:
+- Added pending integration values:
   - `GOOGLE_FORM_PUBLIC_URL`
   - `GOOGLE_FORM_EMBED_URL`
   - `GOOGLE_SHEET_PRIVATE_NAME`
 - Routed Home and App page waitlist CTAs to `contact.html#waitlist`.
 - Rebuilt the Contact page around one dedicated Ash IQ waitlist/contact section.
 - Added support for either a Google Form iframe embed or a large public Google Form button.
-- Kept the placeholder state polished and explicit when no live Form URL is configured.
+- Kept the pending form state polished and explicit when no live Form URL is configured.
 - Did not expose any Google Sheet URL.
 - Did not add a backend, authentication, profile system, database, or fake submission behavior.
 
@@ -174,7 +174,7 @@ Test response submitted: no, because the Google Form was not created.
 - Preserved the warm, grounded visual system using cedar, ash, charcoal, off-white, muted brass, evergreen, and oxblood accents.
 - Kept the Home hero full-width and app-focused with Ash IQ as the first-viewport signal.
 - Used a generated hero image showing a mobile app mockup on a refined workspace.
-- Updated favicon and social preview placeholders to use Ash IQ/AIQ language.
+- Updated favicon and social preview assets to use Ash IQ/AIQ language.
 - Kept card radii restrained and avoided cluttered lounge tropes, smoke graphics, fake luxury claims, and dark-heavy styling.
 - Preserved visible keyboard focus states, semantic headings, image alt text, skip link, and accessible navigation labels.
 
@@ -193,8 +193,8 @@ Test response submitted: no, because the Google Form was not created.
 - Placed pages at the repository root so GitHub Pages can publish without a build step.
 - Kept all styling in `assets/css/styles.css`.
 - Kept all browser behavior in `assets/js/main.js`, limited to mobile navigation and footer copyright text.
-- Replaced the previous mailto waitlist/contact path with a Google Forms-ready placeholder path.
-- Added placeholder comments only where future waitlist-form and app-store-link integrations should go.
+- Replaced the previous mailto waitlist/contact path with a Google Forms-ready pending path.
+- Added pending-integration comments only where future waitlist-form and app-store-link integrations should go.
 - Used relative links so the site works locally and on GitHub Pages project URLs.
 
 ## What Was Intentionally Not Built

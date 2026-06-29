@@ -93,7 +93,7 @@ Use this checklist before publishing the public GitHub Pages website for Ash IQ 
 - Confirm private internal tooling is not exposed or linked.
 - Confirm there is no login button, account creation, user profile UI, database logic, internal tooling, or backend service.
 - Confirm there are no sales, checkout, affiliate links, coupons, retailer ordering, delivery, pickup, or where-to-buy flows.
-- Confirm waitlist/contact placeholders are labeled clearly.
+- Confirm waitlist/contact pending states are labeled clearly.
 - Confirm all internal links work.
 - Confirm the favicon loads.
 - Confirm image alt text is present where needed.

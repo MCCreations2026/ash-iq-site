@@ -52,7 +52,7 @@ Why the Form is not created here:
 
 The remaining step is to create the Form manually in Google Forms and link it to the existing private Sheet by name.
 
-## Website Configuration Placeholders
+## Website Configuration Pending Values
 
 Public form links live in:
 
@@ -242,7 +242,7 @@ Do not paste the entire iframe HTML into the site. The existing Contact page ifr
 - Contact page shows the dedicated waitlist/contact section.
 - If `GOOGLE_FORM_EMBED_URL` is configured, the Contact page embeds the form.
 - If only `GOOGLE_FORM_PUBLIC_URL` is configured, Contact page buttons open the public form in a new tab.
-- If neither URL is configured, the Contact page shows a setup-pending placeholder.
+- If neither URL is configured, the Contact page shows a setup-pending form state.
 
 ## Do Not Publish
 

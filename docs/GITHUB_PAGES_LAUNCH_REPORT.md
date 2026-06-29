@@ -92,7 +92,7 @@ Launch docs:
 - Private response Sheet name: `Ash IQ Waitlist Responses`.
 - Public Form URL configured: no.
 - Embed URL configured: no.
-- Contact page state: polished placeholder with clear setup-pending copy.
+- Contact page state: polished pending form state with clear setup-pending copy.
 - Google Sheet private URL exposed publicly: no.
 - Google Form edit URL exposed publicly: no.
 
@@ -105,14 +105,14 @@ The private Sheet has been created and prepared, but a live Google Form could no
 - Final custom domain.
 - Final contact email/social links.
 - Final privacy policy.
-- Final social preview artwork if Gavin wants a non-placeholder brand image.
+- Final social preview artwork if Gavin wants a different brand image.
 
 ## QA Checklist Results
 
 - Home, About, App, and Contact files exist: passed.
 - Navigation links are relative and valid: passed.
 - Home and App CTAs route to `contact.html#waitlist`: passed.
-- Contact waitlist section renders a placeholder when Form URLs are not configured: passed by code inspection.
+- Contact waitlist section renders a pending form state when Form URLs are not configured: passed by code inspection.
 - Public assets use relative paths: passed.
 - Public HTML/JS/CSS scanned for local Windows paths: passed.
 - Public HTML/JS/CSS scanned for private Google Sheet URLs: passed.
@@ -140,5 +140,5 @@ Automated GitHub launch is blocked in this environment:
 - Enable GitHub Pages from `main` branch root after the repository is pushed.
 - Decide whether to connect a custom domain now or after initial launch.
 - Create the live Google Form and connect it to the private Sheet, or provide an authenticated Google Forms/Apps Script path.
-- Replace the Google Form placeholders in `assets/js/site-config.js`.
+- Replace the blank Google Form URL values in `assets/js/site-config.js`.
 - Add final contact inbox, social links, privacy policy, and analytics only after those decisions are made.

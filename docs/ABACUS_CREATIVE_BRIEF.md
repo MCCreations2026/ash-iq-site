@@ -31,7 +31,7 @@ The product should feel serious, organized, calm, and useful. It is a personal c
 - How it will work: polish the mobile app loop without implying the website has app functionality.
 - About origin story: add Gavin's real anecdote before launch if desired.
 - App launch status: clarify beta timing once known.
-- Contact/waitlist: replace placeholders after email hosting or a waitlist provider is selected.
+- Contact/waitlist: replace pending public-form wiring after email hosting or a waitlist provider is selected.
 
 ## Suggested Graphics
 
