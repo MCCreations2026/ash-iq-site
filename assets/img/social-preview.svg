@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Ash IQ social preview placeholder</title>
+  <desc id="desc">Social preview placeholder for Ash IQ by Pine and Ash.</desc>
+  <rect width="1200" height="630" fill="#f6efe5"/>
+  <rect x="64" y="64" width="1072" height="502" rx="8" fill="#fffaf2" stroke="#d8c9b8" stroke-width="3"/>
+  <circle cx="184" cy="188" r="58" fill="#232826"/>
+  <circle cx="184" cy="188" r="39" fill="none" stroke="#b77e3f" stroke-width="5"/>
+  <text x="184" y="198" fill="#fffaf2" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="800" text-anchor="middle">AIQ</text>
+  <text x="276" y="188" fill="#241c16" font-family="Georgia, 'Times New Roman', serif" font-size="92" font-weight="700">Ash IQ</text>
+  <text x="280" y="244" fill="#825034" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800">by Pine &amp; Ash</text>
+  <text x="280" y="308" fill="#241c16" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800">Know Your Smoke.</text>
+  <text x="280" y="366" fill="#6e6156" font-family="Arial, Helvetica, sans-serif" font-size="27">Track favorites, build a want-to-try list, and learn your palate.</text>
+  <rect x="280" y="424" width="228" height="18" rx="8" fill="#825034"/>
+  <rect x="280" y="462" width="430" height="16" rx="8" fill="#d8c9b8"/>
+  <rect x="858" y="150" width="178" height="350" rx="34" fill="#232826"/>
+  <rect x="872" y="176" width="150" height="296" rx="22" fill="#f6efe5"/>
+  <rect x="894" y="212" width="78" height="13" rx="6" fill="#825034"/>
+  <rect x="894" y="248" width="104" height="17" rx="8" fill="#232826"/>
+  <rect x="894" y="300" width="106" height="66" rx="8" fill="#2f4639"/>
+  <rect x="894" y="386" width="106" height="36" rx="8" fill="#d8c9b8"/>
+</svg>
