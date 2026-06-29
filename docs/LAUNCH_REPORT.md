@@ -1,100 +1,102 @@
-# Ash IQ Public Website Launch Report
+# Ash IQ Site Launch Report
 
-## Launch Summary
+## Repository
 
-- Launch date: June 29, 2026
-- Repository: `MCCreations2026/ash-iq-site`
-- Repository URL: `https://github.com/MCCreations2026/ash-iq-site`
-- Repository visibility: public
-- Live GitHub Pages URL: `https://mccreations2026.github.io/ash-iq-site/`
+- Repository URL: https://github.com/MCCreations2026/ash-iq-site
+- Visibility: Public
 - Branch: `main`
-- Pages source: repository root `/`
+- Pages source: `main` branch, repository root `/`
 - Build command: none
-- GitHub Pages status: built
+- Live GitHub Pages URL: https://mccreations2026.github.io/ash-iq-site/
 
-Published site commit validated before this report commit:
+## Commit State
 
-```text
-522636f4785f45903028b60d87942bbfd7d9f4ef
-```
+- Expected historical local commit: `fd2c548fee03d4089002cb25b062ff2a71296271`
+- Validated launch-content commit before this report: `465ff327e654f2d624e5e46886df43e45d0efab4`
+- Note: this report is committed after the launch-content validation, so the final pushed commit is the commit that adds this file.
 
-The final launch-report commit hash is reported in the final Codex response because a commit cannot contain its own final SHA.
+## Google Pages Configuration
+
+GitHub Pages is enabled with:
+
+- Source: deploy from branch
+- Branch: `main`
+- Folder: `/`
+- HTTPS enforced: yes
+
+## Validation Results
+
+Passed:
+
+- Local branch is `main`.
+- Working tree was clean before launch-report creation.
+- Tracked files are static public website files and launch documentation only.
+- No backend, mobile app, runtime logs, command-center source, private config, secrets, local paths, or non-public app files are tracked.
+- Every public HTML page exists.
+- Internal relative links resolve.
+- CSS, JavaScript, favicon, social preview image, and hero image load by relative paths.
+- No private Google Sheet edit URLs are present.
+- No private Google Form edit URLs are present.
+- No secrets, tokens, credentials, API keys, or private endpoints were found.
+- Live homepage returns HTTP 200.
+- Live About, App, and Contact pages return HTTP 200.
+- Live CSS, JS, favicon, social preview, and hero image return HTTP 200.
+- Browser validation passed in desktop and mobile viewports.
+- Browser console showed no release-blocking errors.
+- No failed browser requests were detected.
+- No horizontal overflow was detected in desktop or mobile viewport checks.
 
 ## Google Form Status
 
-- Public Google Form URL configured: no
-- Public Google Form embed URL configured: no
-- Private response Sheet exposed publicly: no
-- Google Form edit URL exposed publicly: no
-- Fake submission behavior: no
+The public Google Form is not wired yet.
 
-The contact page now shows a safe pending form state. It does not pretend a submission happened and it does not expose private Google URLs. The public Google Form can be wired later by filling the blank values in `assets/js/site-config.js`.
+Current safe behavior:
 
-## Files Changed For Launch
+- `assets/js/site-config.js` leaves the public Form URL values blank.
+- Contact and waitlist buttons show a clear pending state.
+- The site does not pretend a form submission happened.
+- No private Google Form edit URL is exposed.
+- No private Google Sheet edit URL is exposed.
 
-- `.gitignore`
-- `README.md`
-- `assets/css/styles.css`
-- `assets/img/favicon.svg`
-- `assets/img/social-preview.svg`
-- `assets/js/main.js`
-- `assets/js/site-config.js`
-- `contact.html`
+Remaining non-launch-blocking item:
+
+- Gavin should create the public Google Form response URL and optional embed URL, then add those public URLs to `assets/js/site-config.js`.
+
+## Files Changed For This Launch Pass
+
 - `docs/ABACUS_CREATIVE_BRIEF.md`
 - `docs/CODEX_BUILD_REPORT.md`
 - `docs/GITHUB_PAGES_LAUNCH_REPORT.md`
 - `docs/GOOGLE_FORMS_WAITLIST_SETUP.md`
 - `docs/LAUNCH_CHECKLIST.md`
-- `docs/LAUNCH_REPORT.md`
 - `docs/WAITLIST_QA_CHECKLIST.md`
-
-## Validation Results
-
-- Local repository branch is `main`: passed.
-- Local tracked files are launch-safe public site files only: passed.
-- Local public pages and assets exist: passed.
-- Local internal links resolve: passed.
-- Local tracked-file scan for Windows paths, loopback URLs, private Google edit URLs, tokens, API keys, and sentinel strings: passed.
-- No backend, mobile, runtime, command-center, private config, secrets, or non-public files are tracked: passed.
-- No fake form submission behavior exists: passed.
-- GitHub repository created and public: passed.
-- `main` pushed to `origin`: passed.
-- GitHub Pages enabled from `main` and `/`: passed.
-- GitHub Pages API reports `status: built`: passed.
-- Live Home, About, App, and Contact pages return HTTP 200: passed.
-- Live CSS, JS, favicon, social preview, and hero image assets return HTTP 200: passed.
-- Live rendered source scan for local paths and private Google edit URLs: passed.
-- Headless Chrome mobile and desktop screenshots generated: passed.
+- `docs/LAUNCH_REPORT.md`
 
 ## Commands Used
 
-```powershell
+Commands were run with the local Git and GitHub CLI tools available on this machine. Secrets and tokens are omitted.
+
+```bash
 git status --short
 git branch --show-current
 git rev-parse HEAD
 git log --oneline -5
 git remote -v
 git ls-files
-rg sensitive-pattern scan over tracked public files
-git grep sensitive-pattern scan over tracked public files
-winget install --id GitHub.cli -e --accept-source-agreements --accept-package-agreements --silent
+rg -n -I "<forbidden launch patterns>" .
+python <static validation script>
 gh auth status
-gh auth login --hostname github.com --git-protocol https --web --clipboard
-gh repo view MCCreations2026/ash-iq-site --json nameWithOwner,isPrivate,defaultBranchRef,url
-gh repo create ash-iq-site --public --description 'Public website for Ash IQ by Pine & Ash.' --source . --remote origin --push
-'{"source":{"branch":"main","path":"/"}}' | gh api --method POST repos/MCCreations2026/ash-iq-site/pages --input -
+gh repo view MCCreations2026/ash-iq-site --json nameWithOwner,visibility,isPrivate,defaultBranchRef,url
+git ls-remote https://github.com/MCCreations2026/ash-iq-site.git
+git push -u origin main
 gh api repos/MCCreations2026/ash-iq-site/pages
-gh api repos/MCCreations2026/ash-iq-site/pages/builds/latest
-Invoke-WebRequest -Uri 'https://mccreations2026.github.io/ash-iq-site/' -UseBasicParsing
-chrome --headless=new --disable-gpu --hide-scrollbars --window-size=390,844 --screenshot=<temp>/ash-iq-site-mobile.png 'https://mccreations2026.github.io/ash-iq-site/'
-chrome --headless=new --disable-gpu --hide-scrollbars --window-size=1440,1000 --screenshot=<temp>/ash-iq-site-desktop.png 'https://mccreations2026.github.io/ash-iq-site/contact.html'
+python <live source validation script>
+pnpm dlx --package @playwright/test playwright test runtime-pages-check.spec.js --reporter=line
 ```
 
-Commands are normalized in this public report to avoid committing local machine paths or sensitive scan literals. No secrets, tokens, OAuth values, private Sheet URLs, or private Form edit URLs were committed or written into this report.
+## Remaining Follow-Up Items
 
-## Remaining Non-Launch-Blocking Items
-
-- Create and connect the live public Google Form.
-- Add final contact inbox and privacy policy.
-- Decide on a custom domain.
-- Add analytics only after privacy and provider decisions are made.
+- Wire the final public Google Form response URL.
+- Add a custom domain if desired.
+- Add final support/privacy links when available.
+- Replace preview social artwork later if a final branded image is produced.
