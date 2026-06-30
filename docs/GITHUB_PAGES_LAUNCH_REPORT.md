@@ -69,6 +69,7 @@ Launch docs:
 - `docs/LAUNCH_CHECKLIST.md`
 - `docs/LAUNCH_REPORT.md`
 - `docs/WAITLIST_QA_CHECKLIST.md`
+- `docs/tools/create_ash_iq_google_form_apps_script.js`
 
 ## Final Brand Naming Confirmed
 
@@ -81,6 +82,8 @@ Launch docs:
 ## Waitlist/Form Status
 
 - Private response Sheet name: `Ash IQ Waitlist Responses`.
+- EZ Estimates workflow comparison completed: EZ used a Google Apps Script generator run from Gavin's Google account.
+- Matching Ash IQ generator added: `docs/tools/create_ash_iq_google_form_apps_script.js`.
 - Public Form URL configured: no.
 - Embed URL configured: no.
 - Contact page state: polished pending form state with clear setup-pending copy.
@@ -88,7 +91,7 @@ Launch docs:
 - Google Form edit URL exposed publicly: no.
 - Fake submission behavior: no.
 
-The private Sheet has been created and prepared, but a live Google Form could not be created automatically from this environment because the available connector set does not expose Google Forms creation, Apps Script execution, or authenticated Forms API access.
+The private Sheet exists, but a live Google Form is still pending. The available Google Drive connector does not expose Google Forms creation or Apps Script execution. Direct Apps Script and Forms API probes returned `401 Unauthorized`. The `clasp` CLI is reachable through the bundled Node runtime and reached the Google OAuth authorization prompt, but Codex cannot approve Gavin's Google account unattended.
 
 ## Known Pending Items
 

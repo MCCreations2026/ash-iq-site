@@ -72,3 +72,5 @@ docs/*
 !docs/LAUNCH_CHECKLIST.md
 !docs/LAUNCH_REPORT.md
 !docs/WAITLIST_QA_CHECKLIST.md
+!docs/tools/
+!docs/tools/create_ash_iq_google_form_apps_script.js

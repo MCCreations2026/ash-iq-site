@@ -46,6 +46,7 @@ docs/LAUNCH_CHECKLIST.md
 docs/ABACUS_CREATIVE_BRIEF.md
 docs/CODEX_BUILD_REPORT.md
 docs/GITHUB_PAGES_LAUNCH_REPORT.md
+docs/tools/create_ash_iq_google_form_apps_script.js
 ```
 
 The larger product repository still contains the mobile app, backend, scripts, and product documentation. Read `PROJECT_NORTH_STAR.md` before changing product, architecture, API, data model, or UI decisions.
@@ -97,7 +98,13 @@ The site is wired for one public waitlist/contact path:
 - Contact page contains the Ash IQ waitlist/contact section.
 - The Contact page can either embed the public Google Form or open the public Google Form in a new tab.
 
-A private Google Sheet named `Ash IQ Waitlist Responses` was created and prepared through the Google Drive connector. A live Google Form could not be created from this environment because no Google Forms or Apps Script creation/execution path is available. The Form URLs remain intentionally blank until Gavin creates the Google Form and links it to the private response Sheet.
+A private Google Sheet named `Ash IQ Waitlist Responses` exists. A forensic comparison against the EZ Estimates launch found that EZ used a Google Apps Script generator, run from Gavin's Google account, to create the live Google Form and linked Sheet. Ash IQ now has the same style of generator at:
+
+```text
+docs/tools/create_ash_iq_google_form_apps_script.js
+```
+
+Codex reached the `clasp` Google OAuth authorization prompt with the bundled Node runtime, but cannot approve Gavin's Google account unattended. The live Form URLs remain intentionally blank until Gavin authorizes/runs the Apps Script and copies back the public responder/embed URLs.
 
 Configuration lives in:
 
@@ -122,14 +129,14 @@ Manual setup docs:
 
 ## Test The Waitlist Flow
 
-1. Create `Ash IQ Waitlist & Contact Form` in Google Forms.
-2. Link responses to the private Sheet named `Ash IQ Waitlist Responses`.
-3. Paste the public Form URL and optional embed URL into `assets/js/site-config.js`.
+1. Run `docs/tools/create_ash_iq_google_form_apps_script.js` in Google Apps Script, or authorize `clasp` and run the same generator.
+2. Copy only the public responder URL and optional public embed URL from the script logs.
+3. Paste those public URLs into `assets/js/site-config.js`.
 4. Preview the site locally.
 5. Click every waitlist/contact CTA.
 6. Submit a test response.
 7. Confirm the response appears in the private Google Sheet.
-8. Confirm the Sheet URL is not exposed anywhere public.
+8. Confirm the Sheet URL and Form edit URL are not exposed anywhere public.
 
 ## Connect A Custom Domain Later
 

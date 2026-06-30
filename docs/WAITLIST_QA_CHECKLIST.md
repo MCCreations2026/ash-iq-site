@@ -2,6 +2,16 @@
 
 Use this checklist after the Google Form public URL and optional embed URL are configured.
 
+## Apps Script Creation Check
+
+- Confirm `docs/tools/create_ash_iq_google_form_apps_script.js` was run from Gavin/Pine & Ash's Google account.
+- Confirm the Form title is `Ash IQ Waitlist & Contact Form`.
+- Confirm the linked Sheet is named `Ash IQ Waitlist Responses`.
+- Confirm the Form response destination is the linked Sheet.
+- Confirm the script logs included a published responder URL.
+- Confirm the script logs included a public embed URL or a responder URL with `embedded=true`.
+- Confirm the Form edit URL and private Sheet URL were not pasted into website files.
+
 ## CTA Clicks
 
 - Click the Home page `Join the Waitlist` button.

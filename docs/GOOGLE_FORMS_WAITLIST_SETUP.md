@@ -2,57 +2,86 @@
 
 This guide explains how to connect the static Ash IQ by Pine & Ash website to a public Google Form and private Google Sheet.
 
+The website stays static on GitHub Pages. Visitors interact only with the public Google Form or an embedded public Google Form. The response Sheet is private/internal and must not be published or linked from the website.
+
 ## Purpose
 
 The form collects Ash IQ waitlist, early testing, business, partnership, press/media, and general contact submissions.
 
-The website stays static on GitHub Pages. Visitors interact only with the public Google Form or an embedded public Google Form. The response Sheet is private/internal and must not be published or linked from the website.
+Joining the waitlist does not create an Ash IQ app account. Full profiles, cigar logs, saved lists, favorites, and recommendations will live inside the future Ash IQ mobile app.
 
 ## Required Names
 
-Google Form name:
+Google Form:
 
 ```text
 Ash IQ Waitlist & Contact Form
 ```
 
-Linked Google Sheet name:
+Linked Google Sheet:
 
 ```text
 Ash IQ Waitlist Responses
 ```
 
+## EZ Estimates Workflow Comparison
+
+The EZ Estimates public site did not use a special Google Forms connector. Its workflow was:
+
+1. Store a Google Apps Script generator in the repo.
+2. Open `https://script.google.com` while signed into Gavin's Google account.
+3. Paste and run the generator.
+4. Approve Google permissions.
+5. The script created the Google Form, created the Google Sheet, linked responses with `form.setDestination(...)`, and logged the public responder URL.
+6. The public responder URL was copied into the static website config.
+
+EZ files inspected:
+
+```text
+tools/google-forms/create-ez-estimates-demo-form.gs
+public-launch-site/site-config.js
+docs/free-launch/google-form-setup.md
+docs/free-launch/demo-request-flow.md
+docs/free-launch/internal-demo-lead-tracker.md
+```
+
+Ash IQ now has the matching generator:
+
+```text
+docs/tools/create_ash_iq_google_form_apps_script.js
+```
+
 ## Current Automation Status
 
-Codex attempted automated creation in this environment.
-
-Created:
+Created or confirmed:
 
 - Private Google Sheet named `Ash IQ Waitlist Responses`.
-- Sheet tab named `Responses`.
-- Header row with the recommended columns.
-- Status dropdown values for internal follow-up.
+- Prepared public website config location: `assets/js/site-config.js`.
+- Apps Script generator matching the EZ Estimates workflow.
 
-Not created:
+Not yet completed:
 
 - Google Form named `Ash IQ Waitlist & Contact Form`.
 - Form-to-Sheet response destination link.
 - Public responder URL.
 - Embed URL.
+- Test response confirmation.
 
-Why the Form is not created here:
+Evidence from this environment:
 
-- Google Drive connector is available and can create Sheets, Docs, Slides, folders, and edit spreadsheet content.
-- No Google Forms connector action is available.
-- No Google Apps Script connector action is available.
-- Direct Google Forms API probe returned `401 Unauthorized`.
+- Google Drive connector can search Drive and inspect/create Sheets, Docs, Slides, and folders.
+- Google Drive connector does not expose Google Forms creation.
+- Google Drive connector does not expose Apps Script create/execute.
+- Drive search found `Ash IQ Waitlist Responses`.
+- Drive search found no Google Form named `Ash IQ Waitlist & Contact Form`.
 - Direct Google Apps Script API probe returned `401 Unauthorized`.
-- No local `gcloud` credentials, `clasp` credentials, Apps Script CLI, or browser binary were available.
-- Google AI/tool discovery did not expose a Google Forms or Apps Script creation tool.
+- Direct Google Forms API probe returned `401 Unauthorized`.
+- `clasp` works through the bundled Node runtime, but is not logged in.
+- `clasp login --no-localhost` produced the Google OAuth authorization URL and then stopped at the required "paste the browser authorization URL/code" prompt.
 
-The remaining step is to create the Form manually in Google Forms and link it to the existing private Sheet by name.
+Conclusion: the same Apps Script workflow used for EZ Estimates is available as an assisted path, but Codex cannot complete the Google permission approval unattended in this environment. Gavin must authorize the Google account or run the prepared script in Apps Script.
 
-## Website Configuration Pending Values
+## Website Configuration
 
 Public form links live in:
 
@@ -60,7 +89,7 @@ Public form links live in:
 assets/js/site-config.js
 ```
 
-Pending configuration:
+Current pending configuration:
 
 ```js
 GOOGLE_FORM_PUBLIC_URL: ""
@@ -70,9 +99,40 @@ GOOGLE_SHEET_PRIVATE_NAME: "Ash IQ Waitlist Responses"
 
 Only paste public/published Google Form URLs into the public website. Do not paste Google Form edit links. Do not paste the private Google Sheet URL.
 
+## Preferred Setup: Apps Script
+
+Use this path to reproduce the EZ Estimates workflow.
+
+1. Open `docs/tools/create_ash_iq_google_form_apps_script.js`.
+2. Copy the full script.
+3. Go to `https://script.google.com`.
+4. Create a new Apps Script project.
+5. Paste the full script into the editor.
+6. Save the project.
+7. Run `createAshIqWaitlistAndContactForm`.
+8. Approve the requested Google permissions.
+9. Open the execution logs.
+10. Copy only the `Published responder form URL` into `GOOGLE_FORM_PUBLIC_URL`.
+11. Copy only the `Public embed URL` into `GOOGLE_FORM_EMBED_URL` if embedding the form.
+12. Do not copy the edit URL or Sheet URL into public website files.
+
+The script creates or reuses the Sheet named `Ash IQ Waitlist Responses`, links the Form response destination to it, creates a `Response Review` tab, and writes internal links into a private `Form Links` tab.
+
+## Optional CLI Setup With Clasp
+
+This path needs Gavin's Google OAuth approval.
+
+```powershell
+pnpm dlx @google/clasp login --no-localhost
+```
+
+If `node` or `pnpm` is not on PATH, add the local Codex-bundled Node and pnpm directories to PATH first. When `clasp` prints the Google authorization URL, open it in the browser, approve the requested permissions, and paste the returned browser URL/code into the terminal prompt. After login, a temporary Apps Script project can be created and the generator can be pushed/run.
+
+Do not commit `.clasprc.json`, OAuth tokens, temporary `.clasp.json` files, credentials, Form edit URLs, or private Sheet URLs.
+
 ## Form Fields
 
-Create these fields in Google Forms.
+Create these fields in Google Forms. The Apps Script generator creates them automatically.
 
 ### 1. Full Name
 
@@ -98,7 +158,7 @@ Create these fields in Google Forms.
 ### 5. What best describes you?
 
 - Type: Multiple choice
-- Required: Recommended
+- Required: Yes
 - Options:
   - Casual cigar smoker
   - Regular cigar smoker
@@ -111,7 +171,7 @@ Create these fields in Google Forms.
 ### 6. What are you interested in?
 
 - Type: Checkboxes
-- Required: Recommended
+- Required: Yes
 - Options:
   - Joining the Ash IQ waitlist
   - Testing the app early
@@ -136,14 +196,14 @@ Create these fields in Google Forms.
   - Personal ratings/reviews
   - Recommendations
 
-Note: `Price` is included only as waitlist research input. Do not turn it into price-shopping, retailer, coupon, checkout, or where-to-buy functionality.
+`Price` is included only as waitlist research input. Do not turn it into price-shopping, retailer, coupon, checkout, or where-to-buy functionality.
 
 ### 8. Message
 
 - Type: Paragraph
 - Required: No
 
-### 9. Consent checkbox
+### 9. Consent
 
 - Type: Checkboxes
 - Required: Yes
@@ -155,7 +215,7 @@ I agree to be contacted by Pine & Ash about Ash IQ updates, waitlist access, and
 
 ## Recommended Response Sheet Columns
 
-Google Forms will create most response columns automatically from the form questions. Add internal-only workflow columns in the linked Sheet after the response columns.
+Google Forms creates a response tab automatically from the form questions. The Apps Script generator also creates a private `Response Review` tab with these internal follow-up columns:
 
 - Timestamp
 - Full Name
@@ -183,57 +243,7 @@ Recommended internal status values:
 - Not a Fit
 - Contacted
 
-`Source Page` can be left blank initially because the current website routes all public CTAs through `contact.html#waitlist`. If future direct public Form links are added from multiple pages, use Google Forms prefilled links or internal notes to track source.
-
-## Manual Google Form Setup
-
-1. Open Google Forms while signed into the Pine & Ash/Gavin Google account.
-2. Create a blank form.
-3. Name it `Ash IQ Waitlist & Contact Form`.
-4. Add the fields listed above.
-5. Enable email validation on `Email Address`.
-6. Make the consent checkbox required.
-7. In Settings, confirm the form accepts responses.
-8. Do not require Google sign-in unless that is an intentional launch decision.
-9. Do not collect app passwords or imply this creates an Ash IQ account.
-
-## Link Responses To Google Sheets
-
-1. Open the Google Form.
-2. Go to the `Responses` tab.
-3. Click `Link to Sheets`.
-4. Select the existing spreadsheet named `Ash IQ Waitlist Responses` if Google Forms offers it. If not, create a new spreadsheet with that exact name.
-5. Confirm responses appear in the Sheet.
-6. Confirm internal columns exist for `Source Page`, `Status`, `Notes`, `Follow-Up Owner`, and `Follow-Up Date`. Codex already added these to the prepared Sheet.
-7. Keep the Sheet private to Gavin/Pine & Ash.
-
-## Get The Public Form Link
-
-1. Open the Google Form.
-2. Click `Send`.
-3. Choose the link icon.
-4. Copy the public responder link.
-5. Paste it into `assets/js/site-config.js`:
-
-```js
-GOOGLE_FORM_PUBLIC_URL: "https://docs.google.com/forms/d/e/.../viewform"
-```
-
-Do not paste an edit URL containing `/edit`.
-
-## Get The Embed URL
-
-1. Open the Google Form.
-2. Click `Send`.
-3. Choose the embed icon.
-4. Copy the iframe `src` value only.
-5. Paste that URL into `assets/js/site-config.js`:
-
-```js
-GOOGLE_FORM_EMBED_URL: "https://docs.google.com/forms/d/e/.../viewform?embedded=true"
-```
-
-Do not paste the entire iframe HTML into the site. The existing Contact page iframe will load the configured URL.
+`Source Page` can be left blank initially because the current website routes all public CTAs through `contact.html#waitlist`.
 
 ## Public Website Behavior
 
@@ -248,20 +258,22 @@ Do not paste the entire iframe HTML into the site. The existing Contact page ifr
 
 - Do not publish the response Sheet URL.
 - Do not publish Google Form edit links.
-- Do not commit private Google account credentials.
+- Do not commit `.clasprc.json`, OAuth tokens, credentials, API keys, or private sharing links.
 - Do not add a custom backend for this flow.
 - Do not add website login, profile, or app-account behavior.
 
 ## Final Test Checklist
 
-- Open the site locally or on GitHub Pages.
-- Click Home page `Join the Waitlist`.
-- Click App page `Join the Ash IQ Waitlist`.
-- Open Contact page `Join the Ash IQ Waitlist`.
-- If embedded, confirm the Google Form loads.
-- If using button-only, confirm the public Form opens in a new tab.
+- Open the public responder URL.
+- Confirm the Form title is `Ash IQ Waitlist & Contact Form`.
+- Confirm the Form accepts responses.
 - Submit a test response.
 - Confirm the response appears in `Ash IQ Waitlist Responses`.
 - Confirm the Sheet is private.
-- Confirm the Form is public/respondable.
+- Paste the public responder URL into `GOOGLE_FORM_PUBLIC_URL`.
+- Paste the public embed URL into `GOOGLE_FORM_EMBED_URL` if embedding.
+- Preview the site locally or on GitHub Pages.
+- Click Home page `Join the Waitlist`.
+- Click App page `Join the Ash IQ Waitlist`.
+- Open Contact page `Join the Ash IQ Waitlist`.
 - Confirm no private edit links or Sheet URLs are visible in page source.

@@ -49,9 +49,11 @@ Use this checklist before publishing the public GitHub Pages website for Ash IQ 
 
 ## Contact/Waitlist Form Decision
 
-- Create the Google Form named `Ash IQ Waitlist & Contact Form`.
+- Run `docs/tools/create_ash_iq_google_form_apps_script.js` through Google Apps Script, or create the Google Form named `Ash IQ Waitlist & Contact Form` by hand if the script cannot be run.
 - Link responses to the private Google Sheet named `Ash IQ Waitlist Responses`.
 - Confirm the existing prepared Sheet is used, or document if Google Forms creates a new response tab/file.
+- Confirm the Form accepts public responses.
+- Confirm one test response appears in the linked Sheet.
 - Paste only the public responder URL and optional embed URL into `assets/js/site-config.js`.
 - Confirm spam protection, privacy terms, export format, and notification routing.
 - Do not add a fake form action.

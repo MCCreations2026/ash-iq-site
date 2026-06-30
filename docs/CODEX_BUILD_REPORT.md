@@ -19,6 +19,7 @@
 - `docs/GOOGLE_FORMS_WAITLIST_SETUP.md`
 - `docs/WAITLIST_QA_CHECKLIST.md`
 - `docs/GITHUB_PAGES_LAUNCH_REPORT.md`
+- `docs/tools/create_ash_iq_google_form_apps_script.js`
 
 ## Files Changed
 
@@ -39,6 +40,7 @@
 - `docs/LAUNCH_CHECKLIST.md`
 - `docs/BRAND_ARCHITECTURE.md`
 - `DEVELOPMENT_LOG.md`
+- `docs/tools/create_ash_iq_google_form_apps_script.js`
 
 ## GitHub Pages Launch
 
@@ -94,6 +96,57 @@ docs/LAUNCH_REPORT.md
 
 Automated Google Form creation was attempted and blocked.
 
+## EZ Estimates Form Workflow Comparison
+
+EZ Estimates repo/folder inspected:
+
+```text
+Estimation software
+Estimation software/public-launch-site
+```
+
+Files searched and inspected included:
+
+```text
+tools/google-forms/create-ez-estimates-demo-form.gs
+public-launch-site/site-config.js
+docs/free-launch/google-form-setup.md
+docs/free-launch/demo-request-flow.md
+docs/free-launch/internal-demo-lead-tracker.md
+README.md
+public-launch-site/*.html
+```
+
+Exact EZ Estimates method discovered:
+
+- EZ used Google Apps Script.
+- The script used `FormApp.create('EZ Estimates Concrete Demo Request')`.
+- The script used `SpreadsheetApp.create('EZ Estimates Concrete Demo Leads')`.
+- The script linked responses with `form.setDestination(FormApp.DestinationType.SPREADSHEET, spreadsheet.getId())`.
+- The script logged the public responder URL, edit URL, and response spreadsheet URL.
+- The public responder URL was stored in `public-launch-site/site-config.js`.
+- The Form was opened in a new tab from the website. No embed URL was used.
+- The private Sheet URL was documented in internal docs, not committed into public website config.
+
+Same method attempted for Ash IQ:
+
+- Added `docs/tools/create_ash_iq_google_form_apps_script.js`, modeled on the EZ Apps Script workflow.
+- Checked Google Drive connector capabilities; it can work with Drive and Sheets, but not Google Forms or Apps Script execution.
+- Searched Google Drive for an existing Ash IQ Form; none was found.
+- Confirmed the private Sheet named `Ash IQ Waitlist Responses` exists and has the expected header row.
+- Probed the Apps Script API directly; it returned `401 Unauthorized`.
+- Probed the Forms API directly; it returned `401 Unauthorized`.
+- Retried `clasp` with the bundled Node runtime on PATH; `clasp` ran and reported version `3.3.0`.
+- Checked `clasp` authorization; it reported `Not logged in.`
+- Ran `clasp login --no-localhost`; it generated the Google OAuth authorization URL and then stopped at the required browser-returned URL/code prompt.
+
+Result:
+
+- The EZ method was identified and reproduced as far as this environment can go without Google OAuth approval.
+- The remaining blocker is authentication/user approval for Gavin's Google account, not missing script logic.
+- Blocker category: Google authentication and permission approval for Apps Script/Drive/Form scopes.
+- Evidence: connector lacks Forms/Apps Script actions, direct APIs returned `401 Unauthorized`, and `clasp` reached the OAuth prompt but could not complete unattended.
+
 Creation path audit:
 
 - Google Drive/Sheets connector: available. Used successfully to create and prepare the private response Sheet.
@@ -103,8 +156,9 @@ Creation path audit:
 - Apps Script API direct call: blocked with `401 Unauthorized`.
 - Google Forms API direct call: blocked with `401 Unauthorized`.
 - Local `gcloud` credentials: unavailable.
-- Local `clasp` credentials/CLI: unavailable.
-- Browser-based authenticated creation: unavailable because no local browser command was present.
+- Local `clasp` CLI: available through bundled Node and pnpm.
+- Local `clasp` credentials: unavailable; `clasp` reported `Not logged in`.
+- Browser/OAuth authenticated creation: blocked pending Gavin approval of the Google OAuth authorization flow.
 
 Created:
 
@@ -112,6 +166,7 @@ Created:
 - Sheet tab named `Responses`.
 - Recommended response columns.
 - Internal status dropdown values.
+- Apps Script generator: `docs/tools/create_ash_iq_google_form_apps_script.js`.
 
 Not created:
 
@@ -224,7 +279,7 @@ the local server URL printed by the command
 - Public HTML pages were scanned for old app naming, internal-tooling exposure, and disallowed commerce language.
 - Public HTML and JavaScript were scanned to confirm no Google Sheet URL or private Google Form edit URL was committed.
 - Remaining restricted terms appear only in developer/support docs as explicit guardrails or conflict notes.
-- JavaScript syntax checking was skipped because no local or bundled `node.exe` was available in this shell.
+- JavaScript syntax checking was initially skipped because `node.exe` was not on PATH; later inspection found bundled Node in the local Codex runtime and the Apps Script generator passed `node --check`.
 - Browser screenshot QA was not run because no local browser command or Playwright package is available in this shell.
 
 ## Remaining Decisions For Gavin
